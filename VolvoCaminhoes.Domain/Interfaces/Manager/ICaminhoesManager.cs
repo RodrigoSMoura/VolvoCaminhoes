@@ -14,23 +14,23 @@ namespace VolvoCaminhoes.Domain.Interfaces.Manager
         /// <summary>
         /// Insere um caminhão
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="caminhao"></param>
         /// <returns></returns>
-        Caminhao Inserir(Caminhao entity);
+        Caminhao Inserir(Caminhao caminhao);
 
         /// <summary>
         /// Atualiza um caminhão
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="caminhao"></param>
         /// <returns></returns>
-        int Atualizar(Caminhao entity);
+        int Atualizar(Caminhao caminhao);
 
         /// <summary>
         /// Exclui um caminhão
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="caminhao"></param>
         /// <returns></returns>
-        int Excluir(Caminhao entity);
+        int Excluir(Caminhao caminhao);
 
         /// <summary>
         /// Obtém todos os modelos

@@ -18,9 +18,14 @@ namespace VolvoCaminhoes.Tests.Repository.Helper
         }
         public static Modelo CreateModelo()
         {
+            return CreateModelo("FH");
+        }
+
+        public static Modelo CreateModelo(string nome)
+        {
             return new Modelo()
             {
-                Nome = "FH"
+                Nome = nome
             };
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using System;
+using System.Linq;
 using VolvoCaminhoes.Domain.Interfaces.Repository;
 using VolvoCaminhoes.Repository.Repositories;
 using VolvoCaminhoes.Tests.Repository.Helper;
@@ -40,6 +41,27 @@ namespace VolvoCaminhoes.Tests.Repository
             Assert.Contains(caminhoes, c => caminhao.AnoModelo == c.AnoModelo);
             Assert.Contains(caminhoes, c => caminhao.Modelo.Id == c.Modelo.Id);
             Assert.Contains(caminhoes, c => caminhao.Modelo.Nome == c.Modelo.Nome);
+        }
+
+        [Fact(DisplayName = "GetByIdModelo")]
+        [Trait("Categoria", nameof(CaminhaoRepository))]
+        public void GetByIdModelo()
+        {
+            var modelo1 = FactoryHelper.CreateModelo();
+            _modeloRepository.Inserir(modelo1);
+            var idModelo1 = modelo1.Id;
+
+            var modelo2 = FactoryHelper.CreateModelo("FM");
+            _modeloRepository.Inserir(modelo2);
+
+            for (int i = 0; i < 1; i++)
+            {
+                _caminhaoRepository.Inserir(FactoryHelper.CreateCaminhao(modelo1.Id));
+            }
+
+            var caminhoes = _caminhaoRepository.GetByModelo(idModelo1);
+            
+            Assert.True(caminhoes.All(c => c.IdModelo == idModelo1));
         }
 
         [Fact(DisplayName = "GetById")]
