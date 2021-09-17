@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Diagnostics.CodeAnalysis;
 using VolvoCaminhoes.Repository.Database.Context;
 
 namespace VolvoCaminhoes.Repository.Migrations
 {
+    [ExcludeFromCodeCoverage]
     [DbContext(typeof(VolvoCaminhoesContext))]
     partial class VolvoCaminhoesContextModelSnapshot : ModelSnapshot
     {

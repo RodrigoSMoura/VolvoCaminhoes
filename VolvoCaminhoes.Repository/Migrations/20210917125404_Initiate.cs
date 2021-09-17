@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace VolvoCaminhoes.Repository.Migrations
 {
+    [ExcludeFromCodeCoverage]
     public partial class Initiate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

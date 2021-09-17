@@ -70,10 +70,7 @@ namespace VolvoCaminhoes.Tests.Manager
         [Fact]
         public void Inserir_Success()
         {
-            var caminhao = new Caminhao()
-            {
-                IdModelo = 1
-            };
+            var caminhao = CriarCaminhao();
 
             _mocker.GetMock<ICaminhaoRepository>()
                 .Setup(c => c.Inserir(It.IsAny<Caminhao>()))
@@ -114,7 +111,7 @@ namespace VolvoCaminhoes.Tests.Manager
         [Fact]
         public void Atualizar_Success()
         {
-            var caminhao = new Caminhao();
+            var caminhao = CriarCaminhao();
             var updateReturn = 1;
 
             _mocker.GetMock<ICaminhaoRepository>()
@@ -147,6 +144,11 @@ namespace VolvoCaminhoes.Tests.Manager
             var retorno = manager.Excluir(caminhao.Id);
 
             Assert.Equal(retorno, deleteReturn);
+        }
+
+        private Caminhao CriarCaminhao()
+        {
+            return new Caminhao() { Id = 1, AnoFabricacao = DateTime.Now.Year, AnoModelo = DateTime.Now.Year, IdModelo = 1 };
         }
     }
 }
