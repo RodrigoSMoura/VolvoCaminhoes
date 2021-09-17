@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using VolvoCaminhoes.Domain.Entities.IdEntity;
 using VolvoCaminhoes.Domain.Interfaces.Repository;
 
@@ -22,9 +24,9 @@ namespace VolvoCaminhoes.Repository.Repositories.Base
             return Salvar();
         }
 
-        public int Excluir(TEntity entity)
+        public int Excluir(int id)
         {
-            dbSet.Remove(entity);
+            dbSet.Remove(GetById(id));
             return Salvar();
         }
 
@@ -49,5 +51,10 @@ namespace VolvoCaminhoes.Repository.Repositories.Base
         {
             return dbContext.SaveChanges();
         }
+        public IEnumerable<TEntity> Filter(Func<TEntity, bool> predicate)
+        {
+            return dbSet.Where(predicate);
+        }
+
     }
 }

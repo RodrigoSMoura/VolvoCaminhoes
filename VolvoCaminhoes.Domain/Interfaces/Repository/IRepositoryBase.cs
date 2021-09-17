@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using VolvoCaminhoes.Domain.Entities.IdEntity;
 
 namespace VolvoCaminhoes.Domain.Interfaces.Repository
@@ -12,6 +13,8 @@ namespace VolvoCaminhoes.Domain.Interfaces.Repository
 
         int Atualizar(TEntity entity);
 
-        int Excluir(TEntity entity);
+        int Excluir(int id);
+
+        IEnumerable<TEntity> Filter(Func<TEntity, bool> predicate);
     }
 }

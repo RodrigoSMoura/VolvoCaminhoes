@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace VolvoCaminhoes.Repository.Migrations
 {
-    [ExcludeFromCodeCoverage]
-    public partial class InitialTables : Migration
+    public partial class Initiate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,6 +39,16 @@ namespace VolvoCaminhoes.Repository.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Modelo",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { 1, "FH" });
+
+            migrationBuilder.InsertData(
+                table: "Modelo",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { 2, "FM" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Caminhao_IdModelo",

@@ -3,13 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Diagnostics.CodeAnalysis;
 using VolvoCaminhoes.Repository.Database.Context;
 
 namespace VolvoCaminhoes.Repository.Migrations
 {
     [DbContext(typeof(VolvoCaminhoesContext))]
-    [ExcludeFromCodeCoverage]
     partial class VolvoCaminhoesContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -57,6 +55,18 @@ namespace VolvoCaminhoes.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Modelo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "FH"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "FM"
+                        });
                 });
 
             modelBuilder.Entity("VolvoCaminhoes.Domain.Entities.Caminhao", b =>

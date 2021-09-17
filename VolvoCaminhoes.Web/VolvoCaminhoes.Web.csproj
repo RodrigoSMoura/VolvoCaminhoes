@@ -10,10 +10,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VolvoCaminhoes.Repository\VolvoCaminhoes.Repository.csproj" />
+    <ProjectReference Include="..\VolvoCaminhoes.Domain\VolvoCaminhoes.Domain.csproj" />
+    <ProjectReference Include="..\VolvoCaminhoes.Ioc\VolvoCaminhoes.Ioc.csproj" />
+    <ProjectReference Include="..\VolvoCaminhoes.Manager\VolvoCaminhoes.Manager.csproj" />
   </ItemGroup>
 
 </Project>

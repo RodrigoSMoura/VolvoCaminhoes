@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VolvoCaminhoes.Manager\VolvoCaminhoes.Manager.csproj" />
     <ProjectReference Include="..\VolvoCaminhoes.Repository\VolvoCaminhoes.Repository.csproj" />
   </ItemGroup>
 

@@ -9,7 +9,7 @@ namespace VolvoCaminhoes.Domain.Interfaces.Manager
         /// Obtém todos os caminhões
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Caminhao> ObterTodos();
+        List<Caminhao> ObterTodos();
 
         /// <summary>
         /// Insere um caminhão
@@ -30,12 +30,27 @@ namespace VolvoCaminhoes.Domain.Interfaces.Manager
         /// </summary>
         /// <param name="caminhao"></param>
         /// <returns></returns>
-        int Excluir(Caminhao caminhao);
+        int Excluir(int id);
 
         /// <summary>
         /// Obtém todos os modelos
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Modelo> ObterModelos();
+        List<Modelo> ObterModelos();
+        
+        /// <summary>
+        /// Obtém um caminhão pelo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Caminhao ObterPorId(int id);
+
+        /// <summary>
+        /// Filtra baseado no idModelo e/ou no Ano de Fabricação
+        /// </summary>
+        /// <param name="idModelo"></param>
+        /// <param name="anoFabricacao"></param>
+        /// <returns></returns>
+        List<Caminhao> Filtrar(int? idModelo, int? anoFabricacao);
     }
 }

@@ -2,7 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Olá!</h1>
+        <p class="lead">Seja bem-vindo ou bem-vinda ao sistema de cadastro de Caminhões da VOLVO.</p>
+        <hr class="my-4">
+        <p>Para iniciar, vá à página de Cadastro pelo menu ou pelo botão abaixo.</p>
+        <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Cadastro" asp-action="Index">Cadastrar Caminhões</a>
+    </div>
 </div>

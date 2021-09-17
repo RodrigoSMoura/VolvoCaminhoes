@@ -9,8 +9,8 @@ using VolvoCaminhoes.Repository.Database.Context;
 namespace VolvoCaminhoes.Repository.Migrations
 {
     [DbContext(typeof(VolvoCaminhoesContext))]
-    [Migration("20210916021737_InitialTables")]
-    partial class InitialTables
+    [Migration("20210917125404_Initiate")]
+    partial class Initiate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,13 +50,25 @@ namespace VolvoCaminhoes.Repository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("Nome")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Modelo");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "FH"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "FM"
+                        });
                 });
 
             modelBuilder.Entity("VolvoCaminhoes.Domain.Entities.Caminhao", b =>

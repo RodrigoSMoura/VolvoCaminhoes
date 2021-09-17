@@ -1,0 +1,39 @@
+﻿<div id="alertas" style="
+    position: absolute;
+    top: 70px;
+    left: 40%;
+">
+    <div class="alert alert-success" style="display: none;" role="alert">
+        <div id="messageSuccess"></div>
+    </div>
+
+    <div class="alert alert-danger" style="display: none;" role="alert">
+        <div id="messageError"></div>
+    </div>
+</div>
+
+<script>
+    function ExibirAlertaSucesso(mensagem) {
+        if (!mensagem) {
+            mensagem = "Operação realizada com sucesso!"
+        }
+
+        $("#messageSuccess").html(mensagem);
+        $(".alert-success").fadeIn(500);
+        setTimeout(function () {
+            $(".alert-success").fadeOut(500);
+        }, 5000);
+    }
+
+    function ExibirAlertaErro(mensagem) {
+        if (!mensagem) {
+            mensagem = "Ocorreu um erro inesperado. Tente novamente mais tarde!"
+        }
+
+        $("#messageError").html(mensagem);
+        $(".alert-danger").fadeIn(500);
+        setTimeout(function () {
+            $(".alert-danger").fadeOut(500);
+        }, 5000);
+    }
+</script>

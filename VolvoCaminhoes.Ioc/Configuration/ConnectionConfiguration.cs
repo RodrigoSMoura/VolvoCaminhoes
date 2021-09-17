@@ -1,29 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using VolvoCaminhoes.Repository.Database.Context;
 
-namespace VolvoCaminhoes.Tests.Repository.Helper
+namespace VolvoCaminhoes.Ioc.Configuration
 {
-    [ExcludeFromCodeCoverage]
-    public class RepositoryTestsBase
+    public static class ConnectionConfiguration
     {
-        protected readonly VolvoCaminhoesContext context;
-
-        public RepositoryTestsBase()
+        public static void AddDataBase(this IServiceCollection services)
         {
             var iConfig = GetConfigurationRoot();
             var connectionString = iConfig.GetSection("ConnectionStrings")["DefaultConnection"];
-
-            var options = new DbContextOptionsBuilder<VolvoCaminhoesContext>()
-                .UseSqlServer(connectionString)
-                .UseLazyLoadingProxies()
-                .Options;
-
-            context = new VolvoCaminhoesContext(options);
+            services.AddDbContext<VolvoCaminhoesContext>(options => options
+                                                                            .UseLazyLoadingProxies()
+                                                                            .UseSqlServer(connectionString));
         }
-
         private static IConfigurationRoot GetConfigurationRoot()
         {
             var projectDir = Directory.GetCurrentDirectory();
@@ -32,11 +24,6 @@ namespace VolvoCaminhoes.Tests.Repository.Helper
                 .SetBasePath(projectDir)
                 .AddJsonFile("appsettings.json")
                 .Build();
-        }
-
-        public VolvoCaminhoesContext GetContext()
-        {
-            return context;
         }
     }
 }

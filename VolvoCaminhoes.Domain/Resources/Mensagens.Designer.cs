@@ -61,6 +61,24 @@ namespace VolvoCaminhoes.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O ano de fabricação deve ser o atual..
+        /// </summary>
+        public static string ERRO_ANO_FABRICACAO_INVALIDO {
+            get {
+                return ResourceManager.GetString("ERRO_ANO_FABRICACAO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O ano do modelo deve ser o atual ou subsequente..
+        /// </summary>
+        public static string ERRO_ANO_MODELO_INVALIDO {
+            get {
+                return ResourceManager.GetString("ERRO_ANO_MODELO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O modelo não foi informado..
         /// </summary>
         public static string ERRO_MODELO_NAO_INFORMADO {

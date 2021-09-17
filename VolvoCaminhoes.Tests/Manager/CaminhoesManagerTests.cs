@@ -133,18 +133,18 @@ namespace VolvoCaminhoes.Tests.Manager
         [Fact]
         public void Excluir_Success()
         {
-            var caminhao = new Caminhao();
+            var caminhao = new Caminhao() { Id = 1 };
             var deleteReturn = 1;
 
             _mocker.GetMock<ICaminhaoRepository>()
-                .Setup(c => c.Excluir(It.IsAny<Caminhao>()))
+                .Setup(c => c.Excluir(It.IsAny<int>()))
                 .Returns(deleteReturn);
 
             _mocker.GetMock<IModeloRepository>();
 
             var manager = _mocker.CreateInstance<CaminhoesManager>();
 
-            var retorno = manager.Excluir(caminhao);
+            var retorno = manager.Excluir(caminhao.Id);
 
             Assert.Equal(retorno, deleteReturn);
         }

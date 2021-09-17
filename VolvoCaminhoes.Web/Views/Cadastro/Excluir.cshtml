@@ -1,0 +1,54 @@
+﻿@model VolvoCaminhoes.Domain.Entities.Caminhao
+@{
+}
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">@ViewBag.Operacao</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <form asp-area="" asp-controller="Cadastro" asp-action="Excluir" data-ajax-method="POST" data-ajax="true" data-ajax-mode="replace" data-ajax-success="SuccessExcluirCallback">
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(x => x.IdModelo, new { @class = "form-label" })
+                            <div class="dropdown">
+                                @Html.DropDownListFor(x => x.IdModelo, (IEnumerable<SelectListItem>)ViewBag.listaModelos, "Selecione...", new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(x => x.AnoFabricacao, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => x.AnoFabricacao, null, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <div class="col-sm-12">
+                            @Html.LabelFor(x => x.AnoModelo, new { @class = "form-label" })
+                            @Html.TextBoxFor(x => x.AnoModelo, null, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function SuccessExcluirCallback(e, d) {
+            if (e.sucesso) {
+                $("#modal").modal('hide');
+                ExibirAlertaSucesso(e.Mensagem);
+                $("#pesquisarForm").submit();
+            } else {
+                ExibirAlertaErro(e.Mensagem);
+            }
+        }
+</script>

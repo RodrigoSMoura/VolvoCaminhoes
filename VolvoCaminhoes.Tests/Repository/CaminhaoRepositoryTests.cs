@@ -34,7 +34,27 @@ namespace VolvoCaminhoes.Tests.Repository
 
             var caminhaoInserido = _caminhaoRepository.Inserir(caminhao);
 
-            var caminhoes = _caminhaoRepository.GetAll();
+            var caminhoes = _caminhaoRepository.GetAll().ToList();
+
+            Assert.Contains(caminhoes, c => caminhao.IdModelo == c.IdModelo);
+            Assert.Contains(caminhoes, c => caminhao.AnoFabricacao == c.AnoFabricacao);
+            Assert.Contains(caminhoes, c => caminhao.AnoModelo == c.AnoModelo);
+            Assert.Contains(caminhoes, c => caminhao.Modelo.Id == c.Modelo.Id);
+            Assert.Contains(caminhoes, c => caminhao.Modelo.Nome == c.Modelo.Nome);
+        }
+
+        [Fact(DisplayName = "Filter")]
+        [Trait("Categoria", nameof(CaminhaoRepository))]
+        public void Filter()
+        {
+            var modelo = FactoryHelper.CreateModelo();
+            _modeloRepository.Inserir(modelo);
+
+            var caminhao = FactoryHelper.CreateCaminhao(modelo.Id);
+
+            var caminhaoInserido = _caminhaoRepository.Inserir(caminhao);
+
+            var caminhoes = _caminhaoRepository.Filter(c => c.IdModelo == modelo.Id);
 
             Assert.Contains(caminhoes, c => caminhao.IdModelo == c.IdModelo);
             Assert.Contains(caminhoes, c => caminhao.AnoFabricacao == c.AnoFabricacao);
@@ -119,7 +139,7 @@ namespace VolvoCaminhoes.Tests.Repository
 
             var idCaminhaoInserido = caminhao.Id;
 
-            _caminhaoRepository.Excluir(caminhao);
+            _caminhaoRepository.Excluir(idCaminhaoInserido);
 
             var caminhaoExcluido = _caminhaoRepository.GetById(idCaminhaoInserido);
 
